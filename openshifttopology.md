@@ -2,13 +2,13 @@
 <!-- TOC -->
 
 - [Basic Openshift Topology](#basic-openshift-topology)
-    - [Prerequisite](#prerequisite)
-    - [Pods](#pods)
-    - [Labels](#labels)
-    - [Deployment](#deployment)
-    - [Service](#service)
-    - [Route](#route)
-    - [Next Step](#next-step)
+  - [Prerequisite](#prerequisite)
+  - [Pods](#pods)
+  - [Labels](#labels)
+  - [Deployment](#deployment)
+  - [Service](#service)
+  - [Route](#route)
+  - [Next Step](#next-step)
 
 <!-- /TOC -->
 ## Prerequisite
@@ -305,4 +305,4 @@ route exposes a service at a host name, like www.example.com, so that external c
   ```
 
 ## Next Step
-- [Configuration Management with Environment Variable, Configmap & Secret](evconfigsecret.md)
+- [Scaling up your application in order to handle workload](scale.md)
