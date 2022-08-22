@@ -98,7 +98,7 @@ Labels are the mechanism used to organize Kubernetes objects. A label is a key-v
   - view change 
     ![](images/topology_7.png)
 - use label for select Openshift Object
-  - To use a label for filtering, use the -l option:
+  - To use a label for filtering, use the -l option: (change user1 to your username)
   ```bash
   oc get pods -l owner=user1
   ```
