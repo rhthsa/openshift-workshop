@@ -190,12 +190,12 @@ Developer can enable monitoring for user-defined projects in addition to the def
   ![](images/alert_2.png)
   
   
-- Test `HightLatency` , run k6 as pod on OpenShift
+- Test `HightLatency` , run k6 as pod on OpenShift, change user1 to your username
   
   ```bash
-  BACKEND_URL=https://$(oc get route backend -n user1 -o jsonpath='{.spec.host}')/backend
+  BACKEND_URL=https://$(oc get route backend -n <your username> -o jsonpath='{.spec.host}')/backend
   curl -o load-test-k6.js https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/load-test-k6.js
-  oc run load-test -n user1 -i \
+  oc run load-test -n <your username> -i \
   --image=loadimpact/k6 --rm=true --restart=Never \
   --  run -  < load-test-k6.js \
   -e URL=$BACKEND_URL -e THREADS=25 -e DURATION=2m -e RAMPUP=30s -e RAMPDOWN=30s
