@@ -109,7 +109,7 @@
     ```bash
     Using project "user1" from context named "user1-context" on server "https://172.30.0.1:443".
     ```
-- if current project is not your project (such as result is not 'Using project "user1"'), use below command to set current project to command line context
+- if current project is not your project (such as result is not 'Using project "user1"'), use below command to set current project to command line context, change "user1" in command to your project name.
     ```bash
     oc project user1
     ```
