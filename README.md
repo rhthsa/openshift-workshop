@@ -2,9 +2,11 @@
 
 ![](images/workshop.png)
 
-[Gitbook version here](https://rhthsa.github.io/openshift-workshop/)
+## Gitbook
 
-## Table of Contents
+Gitbook version [here](https://rhthsa.github.io/openshift-workshop/)
+
+## Main Labs
 - [Deploy application to openshift with s2i](deploywiths2i.md)
 - [Basic Openshift Topology](openshifttopology.md)
 - [Scaling up your application in order to handle workload](scale.md)
