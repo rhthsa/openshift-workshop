@@ -4,7 +4,7 @@
 
 ## Gitbook
 
-Gitbook version [here](https://rhthsa.github.io/openshift-workshop/)
+Gitbook -> [here](https://rhthsa.github.io/openshift-workshop/)
 
 ## Main Labs
 - [Deploy application to openshift with s2i](deploywiths2i.md)
