@@ -338,79 +338,141 @@
 </ul>
 <h2 id="step-by-step-to-deploy-live-flight-tracker-on-openshift">Step by Step to Deploy Live Flight Tracker on OpenShift</h2>
 <ol>
-<li>Create Project for Live Flight Tracker<ul>
-<li>open openshift developer perspective, click  &quot;Project&quot; from left menu, click &quot;create a Project&quot;
-<img src="images/flight/flight-1.png" alt=""></li>
-<li>in create project panel, <ul>
-<li>set Name: \<username\>-flight such as &quot;user1-flight&quot;</username\></li>
-<li>click &quot;create&quot;
-<img src="images/flight/flight-2.png" alt=""></li>
-</ul>
+<li><p>Create Project for Live Flight Tracker</p>
+<ul>
+<li><p>open openshift developer perspective, click  &quot;Project&quot; from left menu, click &quot;create a Project&quot;</p>
+<p> <img src="images/flight/flight-1.png" alt=""></p>
+</li>
+<li><p>in create project panel, </p>
+<ul>
+<li>set Name: <username>-flight such as &quot;user1-flight&quot;</username></li>
+<li><p>click &quot;create&quot;</p>
+<p><img src="images/flight/flight-2.png" alt=""></p>
 </li>
 </ul>
 </li>
-<li>Create Kafka on OpenShift<ul>
-<li>click Topology in left menu
-<img src="images/flight/flight-3.png" alt=""></li>
+</ul>
+</li>
+<li><p>Create Kafka on OpenShift</p>
+<ul>
+<li>click Topology in left menu</li>
+</ul>
+<p><img src="images/flight/flight-3.png" alt=""></p>
+<ul>
 <li>click add icon (book with plus sign, right top, near Display options)</li>
-<li>type &quot;kafka&quot; in search box, select &quot;Kafka&quot; and click Create
-<img src="images/flight/flight-4.png" alt=""></li>
-<li>in Create Kafka, leave all default, click create
-<img src="images/flight/flight-5.png" alt=""></li>
-<li>wait until kafka complete deployment, you will see 3 deployment in kafka &quot;my-cluster&quot; (wait until all 3 deployment circle change to dark blue)
-<img src="images/flight/flight-7.png" alt=""></li>
+<li><p>type &quot;kafka&quot; in search box, select &quot;Kafka&quot; and click Create</p>
+<p> <img src="images/flight/flight-4.png" alt=""></p>
+</li>
+<li><p>in Create Kafka, leave all default, click create</p>
+<p> <img src="images/flight/flight-5.png" alt=""></p>
+</li>
+<li><p>wait until kafka complete deployment, you will see 3 deployment in kafka &quot;my-cluster&quot; (wait until all 3 deployment circle change to dark blue)</p>
+<p> <img src="images/flight/flight-7.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>Create Topic in kafka<ul>
+<li><p>Create Topic in kafka</p>
+<ul>
 <li>in Topology, click add icon (book with plus sign, right top, near Display options)</li>
-<li>type &quot;topic&quot;, select Kafka Topic, click Create
-<img src="images/flight/flight-14.png" alt=""></li>
-<li>in create kafkatopic panel, </li>
+<li><p>type &quot;topic&quot;, select Kafka Topic, click Create</p>
+<p> <img src="images/flight/flight-14.png" alt=""></p>
+</li>
+<li><p>in create kafkatopic panel, </p>
+</li>
 <li>change Name to &quot;flight-data&quot;</li>
-<li>leave other to default, click create
-<img src="images/flight/flight-15.png" alt=""></li>
+<li><p>leave other to default, click create</p>
+<p> <img src="images/flight/flight-15.png" alt=""></p>
+</li>
 <li>repeat create kafkatopic with name &quot;radar-data&quot; and &quot;transponder-data&quot;</li>
-<li>check kafkatopic, in Topology, in my-cluster kafka, click on my-cluster-kafka statefulset (see example in below picture)
-<img src="images/flight/flight-17.png" alt=""></li>
-<li>in right panel popup, click in Resources tab, in Pods section, click view logs link in first pod (such as my-cluster-kafka-0)</li>
+<li><p>check kafkatopic, in Topology, in my-cluster kafka, click on my-cluster-kafka statefulset (see example in below picture)</p>
+<p> <img src="images/flight/flight-17.png" alt=""></p>
+</li>
+<li><p>in right panel popup, click in Resources tab, in Pods section, click view logs link in first pod (such as my-cluster-kafka-0)</p>
+</li>
 <li>after page change to Pod information page, change tab from Logs to Terminal</li>
-<li>openshift will open terminal to pod, in terminal type below commond to check topic in kafka (flight-data, radar-data, transponder-data)
-<img src="images/flight/flight-16.png" alt=""><pre><code class="lang-bash">./bin/kafka-topics.sh --bootstrap-server=localhost:9092 --list
+<li><p>openshift will open terminal to pod, in terminal type below commond to check topic in kafka (flight-data, radar-data, transponder-data)</p>
+<p> <img src="images/flight/flight-16.png" alt=""></p>
+<pre><code class="lang-bash">./bin/kafka-topics.sh --bootstrap-server=localhost:9092 --list
 </code></pre>
-sample output (if you create correct!)<pre><code class="lang-bash">__consumer_offsets
+<p>sample output (if you create correct!)</p>
+<pre><code class="lang-bash">__consumer_offsets
 __strimzi_store_topic
 flight-data
 radar-data
 transponder-data
 </code></pre>
+<p>Alternatively, you can also use Web Terminal with following command to check for topic</p>
+<pre><code class="lang-bash">oc describe kafkatopic/flight-data -n &lt;username&gt;-flight
+</code></pre>
+<p>sample output</p>
+<pre><code class="lang-yaml"> ...
+ Spec:
+ Config:
+    retention.ms:   604800000
+    segment.bytes:  1073741824
+ Partitions:       10
+ Replicas:         3
+ Topic Name:       flight-data
+ Status:
+ Conditions:
+    Last Transition Time:  2022-08-24T11:08:29.292182Z
+    Status:                True
+    Type:                  Ready   
+ ...
+</code></pre>
 </li>
 </ul>
 </li>
-<li>Create Database Postgresql<ul>
-<li>click +Add in left menu, in Developer Catalog, select Database
-<img src="images/flight/flight-8.png" alt=""></li>
-<li>type &quot;postgresql&quot; in search box, select PostgreSQL (Ephermeral)
-<img src="images/flight/flight-9.png" alt=""></li>
-<li>click Instantiate Template
-<img src="images/flight/flight-10.png" alt=""></li>
-<li>In Instantiate Template page, set value<ul>
-<li>leave all default except,</li>
-<li>Database Service Name: &quot;postgresql&quot;</li>
-<li>Connection Username: &quot;flighttracker&quot;</li>
-<li>Conneciton Password: &quot;flighttracker&quot;</li>
-<li>Database Name: &quot;flighttracker&quot;</li>
-<li>click create
-<img src="images/flight/flight-12.png" alt=""></li>
+</ol>
+<ol>
+<li><p>Create Database Postgresql</p>
+<ul>
+<li><p>click +Add in left menu, in Developer Catalog, select Database</p>
+<p> <img src="images/flight/flight-8.png" alt=""></p>
+</li>
+<li><p>type &quot;postgresql&quot; in search box, select PostgreSQL (Ephermeral)</p>
+<p> <img src="images/flight/flight-9.png" alt=""></p>
+</li>
+<li><p>click Instantiate Template</p>
+<p> <img src="images/flight/flight-10.png" alt=""></p>
+</li>
+<li><p>In Instantiate Template page, set value</p>
+<ul>
+<li><p>leave all default except,</p>
+<p>  | Parameter        | Value  |
+  | ------------- |:-------------|
+  |Database Service Name| postgresql|
+  |Connection Username| postgresql|
+  |Conneciton Password| postgresql|
+  |Database Name| postgresql|</p>
+</li>
+<li><p>click create</p>
+<p><img src="images/flight/flight-12.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>wait until postgresql change to dark blue circle
-<img src="images/flight/flight-13.png" alt=""></li>
-</ul>
+<li><p>wait until postgresql change to dark blue circle</p>
+<p> <img src="images/flight/flight-13.png" alt=""></p>
 </li>
-<li>Deploy Data-Aggregator from Container Image<ul>
-<li>click +Add left menu, select Container images
-<img src="images/flight/flight-18.png" alt=""></li>
-<li>in deploy image page, <ul>
+</ul>
+<!-- - Optional: Change PostgreSQL icon
+  - Right click on PostgreSQL icon
+  - Select Edit labels
+  - Add *app.openshift.io/runtime=postgresql*
+
+   ![](images/flight/flight-13-1.png)
+
+   Icon will change to PostgreSQL
+
+   ![](images/flight/flight-13-2.png) -->
+</li>
+<li><p>Deploy Data-Aggregator from Container Image</p>
+<ul>
+<li><p>click +Add left menu, select Container images</p>
+<p> <img src="images/flight/flight-18.png" alt=""></p>
+</li>
+<li><p>in deploy image page, </p>
+<ul>
 <li>select Image name from external registry</li>
 <li>type &quot;quay.io/chatapazar1/data-aggregator&quot;</li>
 <li>runtime icon: change to quarkus</li>
@@ -420,123 +482,166 @@ transponder-data
 <li>resource: Deployment</li>
 <li>target port: 8080</li>
 <li>uncheck create a route to the application</li>
-<li>click create
-<img src="images/flight/flight-19.png" alt="">
-<img src="images/flight/flight-20.png" alt=""></li>
+<li><p>click create</p>
+<p><img src="images/flight/flight-19.png" alt=""></p>
+<p><img src="images/flight/flight-20.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>wait until flight-data-aggregator circle change to dark blue color
-<img src="images/flight/flight-21.png" alt=""></li>
-<li>click flight-data-aggregator, select resources tab, click view logs in first port
-<img src="images/flight/flight-22.png" alt=""></li>
-<li>openshift console will display log of flight-data-aggregator, Verify that there are no errors</li>
+<li><p>wait until flight-data-aggregator circle change to dark blue color</p>
+<p> <img src="images/flight/flight-21.png" alt=""></p>
+</li>
+<li><p>click flight-data-aggregator, select resources tab, click view logs in first port</p>
+<p> <img src="images/flight/flight-22.png" alt=""></p>
+</li>
+<li><p>openshift console will display log of flight-data-aggregator, Verify that there are no errors</p>
+</li>
 </ul>
 </li>
-<li>Deploy Data-Simulator from Git Repository (S2I/OpenShift Build)<ul>
-<li>click +Add in left menu
-<img src="images/flight/flight-23.png" alt=""></li>
-<li>in Import from Git page, set Git Repo URL to : <a href="https://github.com/chatapazar/openshift-workshop.git" target="_blank">https://github.com/chatapazar/openshift-workshop.git</a></li>
+<li><p>Deploy Data-Simulator from Git Repository (S2I/OpenShift Build)</p>
+<ul>
+<li><p>click +Add in left menu</p>
+<p> <img src="images/flight/flight-23.png" alt=""></p>
+</li>
+<li><p>in Import from Git page, set Git Repo URL to : <a href="https://github.com/chatapazar/openshift-workshop.git" target="_blank">https://github.com/chatapazar/openshift-workshop.git</a></p>
+</li>
 <li>click show advanced git options</li>
 <li>set Context dir to : /data-simulator</li>
-<li>select Import Strategy to Builder Image
-<img src="images/flight/flight-24.png" alt=""></li>
-<li>select Java</li>
+<li><p>select Import Strategy to Builder Image</p>
+<p> <img src="images/flight/flight-24.png" alt=""></p>
+</li>
+<li><p>select Java</p>
+</li>
 <li>select Builder Image version to : openjdk-11-ubi8</li>
 <li>in General, Application, select Create Application</li>
 <li>set Application name to : flight-data-simulator</li>
-<li>set name to : flight-data-simulator
-<img src="images/flight/flight-25.png" alt=""></li>
-<li>in resources, select deployment</li>
+<li><p>set name to : flight-data-simulator</p>
+<p> <img src="images/flight/flight-25.png" alt=""></p>
+</li>
+<li><p>in resources, select deployment</p>
+</li>
 <li>in advanced options, leave default target port</li>
-<li>uncheck create a route to the application and click Create
-<img src="images/flight/flight-26.png" alt=""></li>
-<li>in Topology view, click circle &quot;(D) flight-data-simulator&quot; for show deployment information popup in right side of developer console</li>
-<li>in flight-data-simulator information page, click Resources tab, scroll down to Builds section, wait until Build #1 was complete or click View logs for view s2i build your code to container image
-<img src="images/flight/flight-27.png" alt=""></li>
-<li>after build complete, flight-data-simulater circle will change to dark blue color, click view logs in Pods section to view application log, Verify that there are no errors
-<img src="images/flight/flight-29.png" alt=""></li>
+<li><p>uncheck create a route to the application and click Create</p>
+<p> <img src="images/flight/flight-26.png" alt=""></p>
+</li>
+<li><p>in Topology view, click circle &quot;(D) flight-data-simulator&quot; for show deployment information popup in right side of developer console</p>
+</li>
+<li><p>in flight-data-simulator information page, click Resources tab, scroll down to Builds section, wait until Build #1 was complete or click View logs for view s2i build your code to container image
+ <img src="images/flight/flight-27.png" alt=""></p>
+</li>
+<li><p>after build complete, flight-data-simulater circle will change to dark blue color, click view logs in Pods section to view application log, Verify that there are no errors</p>
+<p> <img src="images/flight/flight-29.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>Deploy Map-Service from Git Repository (S2I/OpenShift Build)<ul>
+<li><p>Deploy Map-Service from Git Repository (S2I/OpenShift Build)</p>
+<ul>
 <li>click +Add in left menu, select Import from Git</li>
 <li>in Import from Git page, set Git Repo URL to : <a href="https://github.com/chatapazar/openshift-workshop" target="_blank">https://github.com/chatapazar/openshift-workshop</a></li>
 <li>click show advanced Git options</li>
 <li>set Context dir to : /map-service</li>
-<li>Import Strategy select Builder Image, 
-<img src="images/flight/flight-30.png" alt=""></li>
-<li>select Java,</li>
+<li><p>Import Strategy select Builder Image, </p>
+<p> <img src="images/flight/flight-30.png" alt=""></p>
+</li>
+<li><p>select Java,</p>
+</li>
 <li>set Builder Image version to : openjdk-11-ubi8</li>
 <li>Application set to Create Application</li>
 <li>Application name: flight-map-service</li>
-<li>Name: flight-map-service
-<img src="images/flight/flight-31.png" alt=""></li>
-<li>in resources section, select deployment, leave default target port 8080</li>
-<li>uncheck Create a route to the Applicaiton, click Create
-<img src="images/flight/flight-32.png" alt=""></li>
-<li>in Topology view, click circle &quot;(D) flight-map-service&quot; for show deployment information popup in right side of developer console</li>
-<li>in flight-map-service information page, click Resources tab, scroll down to Builds section, wait until Build #1 was complete or click View logs for view s2i build your code to container image
-<img src="images/flight/flight-33.png" alt=""></li>
-<li>after build complete, flight-data-simulater circle will change to dark blue color, click view logs in Pods section to view application log, Verify that there are no errors
-<img src="images/flight/flight-34.png" alt=""></li>
+<li><p>Name: flight-map-service</p>
+<p> <img src="images/flight/flight-31.png" alt=""></p>
+</li>
+<li><p>in resources section, select deployment, leave default target port 8080</p>
+</li>
+<li><p>uncheck Create a route to the Applicaiton, click Create</p>
+<p> <img src="images/flight/flight-32.png" alt=""></p>
+</li>
+<li><p>in Topology view, click circle &quot;(D) flight-map-service&quot; for show deployment information popup in right side of developer console</p>
+</li>
+<li><p>in flight-map-service information page, click Resources tab, scroll down to Builds section, wait until Build #1 was complete or click View logs for view s2i build your code to container image</p>
+<p> <img src="images/flight/flight-33.png" alt=""></p>
+</li>
+<li><p>after build complete, flight-data-simulater circle will change to dark blue color, click view logs in Pods section to view application log, Verify that there are no errors</p>
+<p> <img src="images/flight/flight-34.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>Create Route for flight-map-service<ul>
+<li><p>Create Route for flight-map-service</p>
+<ul>
 <li>click Project in left menu, select Project: \<your username\="">-flight</your></li>
-<li>in Overview tab, scroll down to Inventory section, select Route
-<img src="images/flight/flight-37.png" alt=""></li>
-<li>in Route page, click Create Route
-<img src="images/flight/flight-38.png" alt=""></li>
-<li>in create route page, leave all default except:<ul>
+<li><p>in Overview tab, scroll down to Inventory section, select Route</p>
+<p> <img src="images/flight/flight-37.png" alt=""></p>
+</li>
+<li><p>in Route page, click Create Route</p>
+<p> <img src="images/flight/flight-38.png" alt=""></p>
+</li>
+<li><p>in create route page, leave all default except:</p>
+<ul>
 <li>name: flight-map-service</li>
 <li>Service: select flight-map-service</li>
 <li>target port: 8080--&gt;8080(TCP)</li>
-<li>uncheck secure route, click create
-<img src="images/flight/flight-39.png" alt=""></li>
+<li><p>uncheck secure route, click create</p>
+<p><img src="images/flight/flight-39.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>back to topology view, in flight-map-service, You will see a route icon in the top right corner of flight-map-service circle (or click flight-map-service circle and see details in flight-map-service deployment information page, resources tab)
-<img src="images/flight/flight-44.png" alt="route" width="200"></li>
+<li><p>back to topology view, in flight-map-service, You will see a route icon in the top right corner of flight-map-service circle (or click flight-map-service circle and see details in flight-map-service deployment information page, resources tab)</p>
+<p> <img src="images/flight/flight-44.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>(Optional) Change Icon and Add Connection Info in Topology (add more information in Topology)<ul>
+<li><p>(Optional) Change Icon and Add Connection Info in Topology (add more information in Topology)</p>
+<ul>
 <li>back to Topology view (click Topology in left menu)</li>
 <li>click flight-data-simulator circle, in (D) flight-data-simulator deployment information, select details tab</li>
 <li>scroll down to Labels section click edit link</li>
 <li>in edit labels popup, remove label &quot;app.openshift.io/runtime=java&quot; (click x icon)</li>
 <li>type &quot;app.openshift.io/runtime=quarkus&quot; to add new icon to this deployment, click save</li>
-<li>verify flight-data-simulator change icon from duke to quarkus
-<img src="images/flight/flight-28.png" alt=""></li>
-<li>Repeat with the other components as follows:<ul>
+<li><p>verify flight-data-simulator change icon from duke to quarkus</p>
+<p> <img src="images/flight/flight-28.png" alt=""></p>
+</li>
+<li><p>Repeat with the other components as follows:</p>
+<ul>
 <li>flight-map-service, remove label &quot;app.openshift.io/runtime=java&quot;, add label &quot;app.openshift.io/runtime=quarkus&quot;</li>
 <li>postgresql, add label &quot;app.openshift.io/runtime=postgresql&quot;</li>
 </ul>
 </li>
-<li>add connection to topology (For cosmetic purposes only, not a real conneciton between components.), click web terminal icon at top right conner (&quot;&gt;_&quot; icon) 
-<img src="images/flight/flight-35.png" alt=""></li>
-<li>wait until command line terminal show in buttom of developer console
-<img src="images/flight/flight-36.png" alt=""></li>
-<li>set current project to your project (&apos;\<your username\="">-flight&apos;) such as user1-flight<pre><code class="lang-bash">oc project &lt;your username&gt;-flight
+<li><p>add connection to topology (For cosmetic purposes only, not a real conneciton between components.), click web terminal icon at top right conner (&quot;&gt;_&quot; icon) </p>
+<p> <img src="images/flight/flight-35.png" alt=""></p>
+</li>
+<li><p>wait until command line terminal show in buttom of developer console</p>
+<p> <img src="images/flight/flight-36.png" alt=""></p>
+</li>
+<li><p>set current project to your project (&apos;\<your username\="">-flight&apos;) such as user1-flight</your></p>
+<pre><code class="lang-bash">oc project &lt;your username&gt;-flight
 </code></pre>
-sample output<pre><code class="lang-bash">Now using project &quot;user1-flight&quot; on server &quot;https://172.30.0.1:443&quot;.
+<p>sample output</p>
+<pre><code class="lang-bash">Now using project &quot;user1-flight&quot; on server &quot;https://172.30.0.1:443&quot;.
 </code></pre>
-</your></li>
-<li>set connection with oc annotate command, type below command in web terminal<pre><code class="lang-bash">oc annotate deployment flight-map-service &apos;app.openshift.io/connects-to=[{&quot;apiVersion&quot;:&quot;apps.openshift.io/v1&quot;,&quot;kind&quot;:&quot;DeploymentConfig&quot;,&quot;name&quot;:&quot;postgresql&quot;},{&quot;apiVersion&quot;:&quot;apps/v1&quot;,&quot;kind&quot;:&quot;Deployment&quot;,&quot;name&quot;:&quot;flight-data-simulator&quot;},{&quot;apiVersion&quot;:&quot;kafka.strimzi.io/v1beta2&quot;,&quot;kind&quot;:&quot;Kafka&quot;,&quot;name&quot;:&quot;my-cluster&quot;}]&apos; 
+</li>
+<li><p>set connection with oc annotate command, type below command in web terminal</p>
+<pre><code class="lang-bash">oc annotate deployment flight-map-service &apos;app.openshift.io/connects-to=[{&quot;apiVersion&quot;:&quot;apps.openshift.io/v1&quot;,&quot;kind&quot;:&quot;DeploymentConfig&quot;,&quot;name&quot;:&quot;postgresql&quot;},{&quot;apiVersion&quot;:&quot;apps/v1&quot;,&quot;kind&quot;:&quot;Deployment&quot;,&quot;name&quot;:&quot;flight-data-simulator&quot;},{&quot;apiVersion&quot;:&quot;kafka.strimzi.io/v1beta2&quot;,&quot;kind&quot;:&quot;Kafka&quot;,&quot;name&quot;:&quot;my-cluster&quot;}]&apos; 
 oc annotate deployment flight-data-simulator &apos;app.openshift.io/connects-to=[{&quot;apiVersion&quot;:&quot;kafka.strimzi.io/v1beta2&quot;,&quot;kind&quot;:&quot;Kafka&quot;,&quot;name&quot;:&quot;my-cluster&quot;}]&apos; 
 oc annotate deployment flight-data-aggregator &apos;app.openshift.io/connects-to=[{&quot;apiVersion&quot;:&quot;kafka.strimzi.io/v1beta2&quot;,&quot;kind&quot;:&quot;Kafka&quot;,&quot;name&quot;:&quot;my-cluster&quot;}]&apos;
 </code></pre>
 </li>
-<li>check result in topology view
-<img src="images/flight/flight-40.png" alt=""></li>
+<li><p>check result in topology view</p>
+<p> <img src="images/flight/flight-40.png" alt=""></p>
+</li>
 </ul>
 </li>
-<li>Test Live Flight Track Demo<ul>
+<li><p>Test Live Flight Track Demo</p>
+<ul>
 <li>in topology view, click route icon of flight-map-service for open web application</li>
-<li>browser will show Live Flight Tracer demo
-<img src="images/flight/flight-41.png" alt=""></li>
-<li>click checkbox show slifht creation form and show websocket log
-<img src="images/flight/flight-42.png" alt=""></li>
-<li>click start this flight button or start 20 random flights button and see simulation in your browser
-<img src="images/flight/flight-43.png" alt=""></li>
+<li><p>browser will show Live Flight Tracer demo</p>
+<p><img src="images/flight/flight-41.png" alt=""></p>
+</li>
+<li><p>click checkbox show slifht creation form and show websocket log</p>
+<p><img src="images/flight/flight-42.png" alt=""></p>
+</li>
+<li><p>click start this flight button or start 20 random flights button and see simulation in your browser</p>
+<p><img src="images/flight/flight-43.png" alt=""></p>
+</li>
 </ul>
 </li>
 </ol>
@@ -579,7 +684,7 @@ oc annotate deployment flight-data-aggregator &apos;app.openshift.io/connects-to
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Live Flight Track","level":"1.2.5","depth":2,"next":{"title":"Optional Labs","level":"1.3","depth":1,"ref":"","articles":[{"title":"App Configuration","level":"1.3.1","depth":2,"path":"evconfigsecret.md","ref":"evconfigsecret.md","articles":[]},{"title":"App Health check","level":"1.3.2","depth":2,"path":"apphealth.md","ref":"apphealth.md","articles":[]},{"title":"Logging","level":"1.3.3","depth":2,"path":"logging.md","ref":"logging.md","articles":[]},{"title":"Storage","level":"1.3.4","depth":2,"path":"storage.md","ref":"storage.md","articles":[]},{"title":"Serverless","level":"1.3.5","depth":2,"path":"serverless.md","ref":"serverless.md","articles":[]}]},"previous":{"title":"Application Monitoring","level":"1.2.4","depth":2,"path":"monitor.md","ref":"monitor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-livereload","search-plus","copy-code-button","mermaid-gb3"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mermaid-newface":{"theme":"neutral"},"search-plus":{},"copy-code-button":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Red Hat Thailand SA","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenShift Workshop","gitbook":"3.2.3"},"file":{"path":"liveflight.md","mtime":"2022-08-24T10:09:19.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-24T10:10:09.958Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Live Flight Track","level":"1.2.5","depth":2,"next":{"title":"Optional Labs","level":"1.3","depth":1,"ref":"","articles":[{"title":"App Configuration","level":"1.3.1","depth":2,"path":"evconfigsecret.md","ref":"evconfigsecret.md","articles":[]},{"title":"App Health check","level":"1.3.2","depth":2,"path":"apphealth.md","ref":"apphealth.md","articles":[]},{"title":"Logging","level":"1.3.3","depth":2,"path":"logging.md","ref":"logging.md","articles":[]},{"title":"Storage","level":"1.3.4","depth":2,"path":"storage.md","ref":"storage.md","articles":[]},{"title":"Serverless","level":"1.3.5","depth":2,"path":"serverless.md","ref":"serverless.md","articles":[]}]},"previous":{"title":"Application Monitoring","level":"1.2.4","depth":2,"path":"monitor.md","ref":"monitor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-livereload","search-plus","copy-code-button","mermaid-gb3"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mermaid-newface":{"theme":"neutral"},"search-plus":{},"copy-code-button":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Red Hat Thailand SA","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenShift Workshop","gitbook":"3.2.3"},"file":{"path":"liveflight.md","mtime":"2022-08-24T13:05:17.507Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-24T13:05:57.288Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
