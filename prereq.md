@@ -15,6 +15,8 @@
 - ElasticSearch
 - ClusterLogging
   - required 3 node of worker
+  - for RHPDS OCP 4.10, create clsuterlogging instance with default yaml (of wizard), don't change anaything. it work!
+  - for RHPDS OCP 4.9 and later use below yaml
   - create clusterlogging instance
     ```yaml
     apiVersion: "logging.openshift.io/v1"
