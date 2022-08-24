@@ -155,17 +155,6 @@
   
       ![](images/flight/flight-13.png)
    
-   <!-- - Optional: Change PostgreSQL icon
-     - Right click on PostgreSQL icon
-     - Select Edit labels
-     - Add *app.openshift.io/runtime=postgresql*
-      
-      ![](images/flight/flight-13-1.png)
-      
-      Icon will change to PostgreSQL
-
-      ![](images/flight/flight-13-2.png) -->
-
 5. Deploy Data-Aggregator from Container Image
    - click +Add left menu, select Container images
    
@@ -184,6 +173,8 @@
      - click create
       
       ![](images/flight/flight-19.png)
+
+      Uncheck "Create Route"
       
       ![](images/flight/flight-20.png)
 
