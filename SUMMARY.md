@@ -9,6 +9,6 @@
 * Optional Labs
   * [App Configuration](evconfigsecret.md)
   * [App Health check](apphealth.md)
-  * [Log](logging.md)
+  * [Logging](logging.md)
   * [Storage](storage.md)
   * [Serverless](serverless.md)
