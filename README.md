@@ -8,7 +8,7 @@ Gitbook [here](https://rhthsa.github.io/openshift-workshop/)
 
 ## Main Labs
 
-- [Deploy application to openshift with s2i](deploywiths2i.md)
+- [Deploy application to openshift with Source-to-Image](deploywiths2i.md)
 - [Basic Openshift Topology](openshifttopology.md)
 - [Scaling up your application in order to handle workload](scale.md)
 - [OOTB Application Monitoring, Alert & User workload monitoring](monitor.md)
