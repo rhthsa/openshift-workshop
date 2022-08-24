@@ -49,6 +49,19 @@
    
       ![](images/flight/flight-7.png)
 
+      You can also check status of Kafka cluster by run following command in Terminal
+
+      ```bash
+      oc get kafka/my-cluster -n <username>-flight
+      ```
+
+      Output
+
+      ```bash
+      NAME         DESIRED KAFKA REPLICAS   DESIRED ZK REPLICAS   READY   WARNINGS
+      my-cluster   3                        3                     True    
+      ```
+
 3. Create Topic in kafka
    - in Topology, click add icon (book with plus sign, right top, near Display options)
    - type "topic", select Kafka Topic, click Create
