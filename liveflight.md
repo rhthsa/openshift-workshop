@@ -142,7 +142,7 @@
   
       ![](images/flight/flight-13.png)
    
-   - Optional: Change PostgreSQL icon
+   <!-- - Optional: Change PostgreSQL icon
      - Right click on PostgreSQL icon
      - Select Edit labels
      - Add *app.openshift.io/runtime=postgresql*
@@ -151,7 +151,7 @@
       
       Icon will change to PostgreSQL
 
-      ![](images/flight/flight-13-2.png)
+      ![](images/flight/flight-13-2.png) -->
 
 5. Deploy Data-Aggregator from Container Image
    - click +Add left menu, select Container images
@@ -200,43 +200,64 @@
    - in General, Application, select Create Application
    - set Application name to : flight-data-simulator
    - set name to : flight-data-simulator
-   ![](images/flight/flight-25.png)
+      
+      ![](images/flight/flight-25.png)
+
    - in resources, select deployment
    - in advanced options, leave default target port
    - uncheck create a route to the application and click Create
-   ![](images/flight/flight-26.png)
+      
+      ![](images/flight/flight-26.png)
+
    - in Topology view, click circle "(D) flight-data-simulator" for show deployment information popup in right side of developer console
    - in flight-data-simulator information page, click Resources tab, scroll down to Builds section, wait until Build #1 was complete or click View logs for view s2i build your code to container image
-   ![](images/flight/flight-27.png)
+      ![](images/flight/flight-27.png)
+
    - after build complete, flight-data-simulater circle will change to dark blue color, click view logs in Pods section to view application log, Verify that there are no errors
-   ![](images/flight/flight-29.png)
+      
+      ![](images/flight/flight-29.png)
+
 7. Deploy Map-Service from Git Repository (S2I/OpenShift Build)
    - click +Add in left menu, select Import from Git
    - in Import from Git page, set Git Repo URL to : https://github.com/chatapazar/openshift-workshop
    - click show advanced Git options
    - set Context dir to : /map-service
    - Import Strategy select Builder Image, 
-   ![](images/flight/flight-30.png)
+      
+      ![](images/flight/flight-30.png)
+
    - select Java,
    - set Builder Image version to : openjdk-11-ubi8
    - Application set to Create Application
    - Application name: flight-map-service
    - Name: flight-map-service
-   ![](images/flight/flight-31.png)
+      
+      ![](images/flight/flight-31.png)
+
    - in resources section, select deployment, leave default target port 8080
    - uncheck Create a route to the Applicaiton, click Create
-   ![](images/flight/flight-32.png)
+   
+      ![](images/flight/flight-32.png)
+   
    - in Topology view, click circle "(D) flight-map-service" for show deployment information popup in right side of developer console
    - in flight-map-service information page, click Resources tab, scroll down to Builds section, wait until Build #1 was complete or click View logs for view s2i build your code to container image
-   ![](images/flight/flight-33.png)
+      
+      ![](images/flight/flight-33.png)
+
    - after build complete, flight-data-simulater circle will change to dark blue color, click view logs in Pods section to view application log, Verify that there are no errors
-   ![](images/flight/flight-34.png)
+      
+      ![](images/flight/flight-34.png)
+
 8. Create Route for flight-map-service
    - click Project in left menu, select Project: \<your username\>-flight
    - in Overview tab, scroll down to Inventory section, select Route
-   ![](images/flight/flight-37.png)
+      
+      ![](images/flight/flight-37.png)
+
    - in Route page, click Create Route
-   ![](images/flight/flight-38.png)
+      
+      ![](images/flight/flight-38.png)
+
    - in create route page, leave all default except:
      - name: flight-map-service
      - Service: select flight-map-service
@@ -246,7 +267,9 @@
       ![](images/flight/flight-39.png)
       
    - back to topology view, in flight-map-service, You will see a route icon in the top right corner of flight-map-service circle (or click flight-map-service circle and see details in flight-map-service deployment information page, resources tab)
-   <img src="images/flight/flight-44.png" alt="route" width="200"/>
+
+      ![](images/flight/flight-44.png)
+
 9. (Optional) Change Icon and Add Connection Info in Topology (add more information in Topology)
    - back to Topology view (click Topology in left menu)
    - click flight-data-simulator circle, in (D) flight-data-simulator deployment information, select details tab
@@ -273,11 +296,13 @@
      ```bash
      oc project <your username>-flight
      ```
+
      sample output
 
      ```bash
      Now using project "user1-flight" on server "https://172.30.0.1:443".
      ```
+
    - set connection with oc annotate command, type below command in web terminal
      
      ```bash
@@ -287,6 +312,7 @@
      ```
 
    - check result in topology view
+  
       ![](images/flight/flight-40.png)
 
 10. Test Live Flight Track Demo
@@ -298,6 +324,7 @@
    - click checkbox show slifht creation form and show websocket log
       
       ![](images/flight/flight-42.png)
+
    - click start this flight button or start 20 random flights button and see simulation in your browser
       
       ![](images/flight/flight-43.png)
