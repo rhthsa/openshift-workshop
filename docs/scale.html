@@ -1,0 +1,502 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Scaling · OpenShift Workshop</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Red Hat Thailand SA">
+        
+        
+    
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="monitor.html" />
+    
+    
+    <link rel="prev" href="openshifttopology.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Main Labs
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="deploywiths2i.html">
+            
+                <a href="deploywiths2i.html">
+            
+                    
+                    Deploy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="openshifttopology.html">
+            
+                <a href="openshifttopology.html">
+            
+                    
+                    Basic Openshift Topology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="scale.html">
+            
+                <a href="scale.html">
+            
+                    
+                    Scaling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="monitor.html">
+            
+                <a href="monitor.html">
+            
+                    
+                    Application Monitoring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="liveflight.html">
+            
+                <a href="liveflight.html">
+            
+                    
+                    Live Flight Track
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Optional Labs
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="evconfigsecret.html">
+            
+                <a href="evconfigsecret.html">
+            
+                    
+                    App Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="apphealth.html">
+            
+                <a href="apphealth.html">
+            
+                    
+                    App Health check
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="logging.html">
+            
+                <a href="logging.html">
+            
+                    
+                    Logging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="storage.html">
+            
+                <a href="storage.html">
+            
+                    
+                    Storage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="serverless.html">
+            
+                <a href="serverless.html">
+            
+                    
+                    Serverless
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Scaling</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="scaling-up-your-application-in-order-to-handle-workload">Scaling up your application in order to handle workload</h1>
+<!-- TOC -->
+<ul>
+<li><a href="#scaling-up-your-application-in-order-to-handle-workload">Scaling up your application in order to handle workload</a><ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#manual-scale-application">Manual Scale Application</a></li>
+<li><a href="#auto-scale-application">Auto Scale Application</a></li>
+<li><a href="#next-step">Next Step</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>Complete <a href="deploywiths2i.html">Deploy application to openshift with s2i</a></li>
+<li>Go to your project (same as your username)</li>
+<li>Open Web Terminal by click &apos;&gt;_&apos; on top of OpenShift Web Console</li>
+<li>use web terminal to run command line</li>
+</ul>
+<h2 id="manual-scale-application">Manual Scale Application</h2>
+<ul>
+<li>click topology in left menu, click Duke icon (backend deployment), Details tab</li>
+<li>click increase ther pod count (^ icon) to 2 Pod
+<img src="images/scale_1.png" alt=""> </li>
+<li>wait until application scale to 2 Pods (circle around Duke icon change to dark blue)
+<img src="images/scale_2.png" alt="">
+<img src="images/scale_3.png" alt=""></li>
+<li>Test load to application, go to web terminal, run below command <pre><code class="lang-bash">BACKEND_URL=https://$(oc get route backend -o jsonpath=&apos;{.spec.host}&apos;)
+while [  1  ];
+do
+  curl $BACKEND_URL/backend
+  printf &quot;\n&quot;
+  sleep 10
+done
+</code></pre>
+example result, check have result from 2 pods (Host value)<pre><code class="lang-bash">Backend version:v1, Response:200, Host:backend-95647fbb8-kt886, Status:200, Message: Hello, World
+Backend version:v1, Response:200, Host:backend-95647fbb8-q9dqv, Status:200, Message: Hello, World
+Backend version:v1, Response:200, Host:backend-95647fbb8-kt886, Status:200, Message: Hello, World
+Backend version:v1, Response:200, Host:backend-95647fbb8-q9dqv, Status:200, Message: Hello, World
+</code></pre>
+</li>
+<li>after few minute, type &apos;ctrl-c&apos; in web terminal to terminated curl command</li>
+<li>go to Resources Tab, in Pods section, show 2 pods after scale
+<img src="images/scale_5.png" alt=""></li>
+<li>click &apos;View logs&apos; of 1st Pod and 2nd Pod to confirm both pod are processed. 
+<img src="images/scale_6.png" alt="">
+example of 1st pod
+<img src="images/scale_7.png" alt=""><br>example of 2nd pod
+<img src="images/scale_8.png" alt="">  </li>
+<li>back to detail pages of backend deployment, scale pod to 0 (for this case, no pod for this application)
+<img src="images/scale_9.png" alt=""><br><img src="images/scale_10.png" alt="">  </li>
+<li>scale backend to 1 pod
+<img src="images/scale_11.png" alt=""> </li>
+</ul>
+<h2 id="auto-scale-application">Auto Scale Application</h2>
+<ul>
+<li>add HorizontalPodAutoscaler</li>
+<li>go to Topology, click at Duke icon for open backend deployment, click action dropdown menu, select Add HorizontalPodAutoscaler
+<img src="images/scale_12.png" alt=""> </li>
+<li>in Add HorizontalPodAutoscaler, use Form view<ul>
+<li>set Name: example</li>
+<li>Minimum Pods: 1</li>
+<li>Maximum Pods: 3</li>
+<li>CPU Utilization: 1%
+<img src="images/scale_13.png" alt=""> </li>
+</ul>
+</li>
+<li>click save, and wait until backend deployment change to Autoscaling
+<img src="images/scale_14.png" alt=""> </li>
+<li>load test to backend application for proof auto scale</li>
+<li>go to web terminal</li>
+<li>run load test command<pre><code class="lang-bash">BACKEND_URL=https://$(oc get route backend -o jsonpath=&apos;{.spec.host}&apos;)
+while [  1  ];
+do
+  curl $BACKEND_URL/backend
+  printf &quot;\n&quot;
+done
+</code></pre>
+</li>
+<li>click detail tab of backend deployment, wait until autoscaled to 3 (wait a few minutes)
+<img src="images/scale_15.png" alt="">   </li>
+<li>click resources tab, see 3 pods auto scale
+<img src="images/scale_16.png" alt=""></li>
+<li>click Observe tab to view CPU usage 
+<img src="images/scale_17.png" alt=""></li>
+<li>back to web terminal, input &apos;ctrl-c&apos; to terminate load test command</li>
+<li>wait 5 minute, autoscaled will reduce pod to 1.
+<img src="images/scale_18.png" alt=""></li>
+<li>remove HorizontalPodAutoscaler, go to backend deployment information page, select action menu, select remove HorizontalPodAutoscaler
+<img src="images/scale_19.png" alt="">      </li>
+<li>confirm Remove, and wait until backend change to manual scale
+<img src="images/scale_20.png" alt=""><br><img src="images/scale_11.png" alt=""> </li>
+<li>Optional: if you don&apos;t want to wait autoscale down to 1 pod, you can remove HorizontalPodAutoscaler and manual scale down to 1 by yourself.</li>
+</ul>
+<h2 id="next-step">Next Step</h2>
+<ul>
+<li><a href="monitor.html">OOTB Application Monitoring &amp; User workload monitoring</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="openshifttopology.html" class="navigation navigation-prev " aria-label="Previous page: Basic Openshift Topology">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="monitor.html" class="navigation navigation-next " aria-label="Next page: Application Monitoring">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Scaling","level":"1.2.3","depth":2,"next":{"title":"Application Monitoring","level":"1.2.4","depth":2,"path":"monitor.md","ref":"monitor.md","articles":[]},"previous":{"title":"Basic Openshift Topology","level":"1.2.2","depth":2,"path":"openshifttopology.md","ref":"openshifttopology.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-livereload","search-plus","copy-code-button","mermaid-gb3"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mermaid-newface":{"theme":"neutral"},"search-plus":{},"copy-code-button":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Red Hat Thailand SA","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenShift Workshop","gitbook":"3.2.3"},"file":{"path":"scale.md","mtime":"2022-08-24T06:32:06.659Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-24T06:32:51.813Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+

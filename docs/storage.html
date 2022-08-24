@@ -1,0 +1,494 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Storage · OpenShift Workshop</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Red Hat Thailand SA">
+        
+        
+    
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="serverless.html" />
+    
+    
+    <link rel="prev" href="logging.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Main Labs
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="deploywiths2i.html">
+            
+                <a href="deploywiths2i.html">
+            
+                    
+                    Deploy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="openshifttopology.html">
+            
+                <a href="openshifttopology.html">
+            
+                    
+                    Basic Openshift Topology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="scale.html">
+            
+                <a href="scale.html">
+            
+                    
+                    Scaling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="monitor.html">
+            
+                <a href="monitor.html">
+            
+                    
+                    Application Monitoring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="liveflight.html">
+            
+                <a href="liveflight.html">
+            
+                    
+                    Live Flight Track
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Optional Labs
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="evconfigsecret.html">
+            
+                <a href="evconfigsecret.html">
+            
+                    
+                    App Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="apphealth.html">
+            
+                <a href="apphealth.html">
+            
+                    
+                    App Health check
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="logging.html">
+            
+                <a href="logging.html">
+            
+                    
+                    Logging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="storage.html">
+            
+                <a href="storage.html">
+            
+                    
+                    Storage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="serverless.html">
+            
+                <a href="serverless.html">
+            
+                    
+                    Serverless
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Storage</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="container-storage">Container Storage</h1>
+<!-- TOC -->
+<ul>
+<li><a href="#container-storage">Container Storage</a><ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#test-create-file-in-container">Test Create File in Container</a></li>
+<li><a href="#create-persistence-data-for-container">Create Persistence Data for Container</a></li>
+<li><a href="#next-step">Next Step</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>Complete <a href="deploywiths2i.html">Deploy application to openshift with s2i</a></li>
+<li>Go to your project (same as your username)</li>
+<li>Open Web Terminal by click &apos;&gt;_&apos; on top of OpenShift Web Console</li>
+<li>use web terminal to run command line</li>
+</ul>
+<h2 id="test-create-file-in-container">Test Create File in Container</h2>
+<ul>
+<li>From Topology view, click Duke icon (backend deployment), in backend deployment view, select Resources Tab
+<img src="images/storage_1.png" alt=""></li>
+<li>Click link of pod name in Pods section
+<img src="images/storage_2.png" alt=""></li>
+<li>in Pod Details, select Terminal Tab to enable Terminal to container
+<img src="images/storage_3.png" alt=""></li>
+<li>In terminal console, test create file in container<pre><code class="lang-bash">cd /opt
+echo &apos;This is a test&apos; &gt; data.txt
+cat /opt/data.txt
+</code></pre>
+example 
+<img src="images/storage_4.png" alt=""></li>
+<li>scale down backend application to 0, back to topology, click Duke icon, in details tab of backend Deployment, click scale down to 0
+<img src="images/storage_5.png" alt="">
+<img src="images/storage_6.png" alt=""></li>
+<li>after scale to 0 complete, scale up backend application to 1 again
+<img src="images/storage_7.png" alt="">
+<img src="images/storage_8.png" alt=""></li>
+<li>Recheck data in container, click at resource tab in backend deployment, select pod &apos;backend-xxx-xxx&apos; link in Pods section
+<img src="images/storage_9.png" alt="">  </li>
+<li>in pod details, select terminal tabs to activate terminal console to pod</li>
+<li>re test with below command, data.txt not found in current container becouse we don&apos;t have persistent storage for it.<pre><code class="lang-bash">cd /opt
+ls
+cat /opt/data.txt
+</code></pre>
+example output
+<img src="images/storage_10.png" alt=""></li>
+</ul>
+<h2 id="create-persistence-data-for-container">Create Persistence Data for Container</h2>
+<ul>
+<li>back to topology, click Duke icon to open backend deployment panel, select action menu dropdownlist, select add storage
+<img src="images/storage_11.png" alt=""></li>
+<li>in add storage, select<ul>
+<li>Persistent Volume Claim: create new claim</li>
+<li>storage class: gp2</li>
+<li>Persistent Volume Claim Name: &apos;userx-cliam&apos; (change userx to your user name)</li>
+<li>access mode: Single User(RWO)</li>
+<li>size: 1 GiB</li>
+<li>Volume Mode: Filesystem</li>
+<li>Mount Path: /data
+example result
+<img src="images/storage_12.png" alt=""></li>
+</ul>
+</li>
+<li>click save and wait until backend redeploy complete
+<img src="images/storage_13.png" alt="">
+<img src="images/storage_14.png" alt=""></li>
+<li>in backend deployment, go to pods tabs, select pod name link &apos;backend-xxx-xxx&apos;
+<img src="images/storage_15.png" alt=""></li>
+<li>go to terminal tab again to open terminal to container, create file again for test persistent<pre><code class="lang-bash">cd /data
+echo &apos;This is a test&apos; &gt; data.txt
+cat /data/data.txt
+</code></pre>
+example output
+<img src="images/storage_17.png" alt="">  </li>
+<li>bact to topology, click duke icon, in Details Tab, scale down backend deployment to 0 and scale up to 1 again (wait until scale complete before go to next step)
+<img src="images/storage_18.png" alt=""></li>
+<li>go to pod terminal again, go to Resources Tab, click pod link &apos;backend-xxx-xxx&apos; in pod section<br><img src="images/storage_19.png" alt="">  </li>
+<li>go to terminal tab to open terminal and retest with below command<pre><code class="lang-bash">cd /data
+ls
+cat data.txt
+</code></pre>
+example output, you will found data.txt 
+<img src="images/storage_20.png" alt="">  </li>
+</ul>
+<h2 id="next-step">Next Step</h2>
+<ul>
+<li><a href="serverless.html">Basic Serverless, auto scale up &amp; scale down by request</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="logging.html" class="navigation navigation-prev " aria-label="Previous page: Logging">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="serverless.html" class="navigation navigation-next " aria-label="Next page: Serverless">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Storage","level":"1.3.4","depth":2,"next":{"title":"Serverless","level":"1.3.5","depth":2,"path":"serverless.md","ref":"serverless.md","articles":[]},"previous":{"title":"Logging","level":"1.3.3","depth":2,"path":"logging.md","ref":"logging.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-livereload","search-plus","copy-code-button","mermaid-gb3"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mermaid-newface":{"theme":"neutral"},"search-plus":{},"copy-code-button":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Red Hat Thailand SA","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenShift Workshop","gitbook":"3.2.3"},"file":{"path":"storage.md","mtime":"2022-08-24T06:32:06.659Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-24T06:32:51.813Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+

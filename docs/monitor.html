@@ -1,0 +1,618 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Application Monitoring · OpenShift Workshop</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Red Hat Thailand SA">
+        
+        
+    
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="liveflight.html" />
+    
+    
+    <link rel="prev" href="scale.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Main Labs
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="deploywiths2i.html">
+            
+                <a href="deploywiths2i.html">
+            
+                    
+                    Deploy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="openshifttopology.html">
+            
+                <a href="openshifttopology.html">
+            
+                    
+                    Basic Openshift Topology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="scale.html">
+            
+                <a href="scale.html">
+            
+                    
+                    Scaling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="monitor.html">
+            
+                <a href="monitor.html">
+            
+                    
+                    Application Monitoring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="liveflight.html">
+            
+                <a href="liveflight.html">
+            
+                    
+                    Live Flight Track
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Optional Labs
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="evconfigsecret.html">
+            
+                <a href="evconfigsecret.html">
+            
+                    
+                    App Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="apphealth.html">
+            
+                <a href="apphealth.html">
+            
+                    
+                    App Health check
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="logging.html">
+            
+                <a href="logging.html">
+            
+                    
+                    Logging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="storage.html">
+            
+                <a href="storage.html">
+            
+                    
+                    Storage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="serverless.html">
+            
+                <a href="serverless.html">
+            
+                    
+                    Serverless
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Application Monitoring</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ootb-application-monitoring-alert--user-workload-monitoring">OOTB Application Monitoring, Alert &amp; User workload monitoring</h1>
+<!-- TOC -->
+<ul>
+<li><a href="#ootb-application-monitoring-alert--user-workload-monitoring">OOTB Application Monitoring, Alert &amp; User workload monitoring</a><ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#openshift-default-monitoring">OpenShift Default Monitoring</a></li>
+<li><a href="#review-application-performance-metric-code">Review Application Performance Metric Code</a></li>
+<li><a href="#add-application-performance-metric-to-openshift">Add Application Performance Metric to OpenShift</a></li>
+<li><a href="#add-alert-to-openshift">Add Alert to OpenShift</a></li>
+<li><a href="#next-step">Next Step</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>Complete <a href="deploywiths2i.html">Deploy application to openshift with s2i</a></li>
+<li>Go to your project (same as your username)</li>
+<li>Open Web Terminal by click &apos;&gt;_&apos; on top of OpenShift Web Console</li>
+<li>use web terminal to run command line</li>
+</ul>
+<h2 id="openshift-default-monitoring">OpenShift Default Monitoring</h2>
+<ul>
+<li>view defalt monitoring per deployment, click topology, click duke icon (backend deployment), in backend deployment, select observe tab<ul>
+<li>view CPU usage,</li>
+<li>view Memory usage
+<img src="images/mon_1.png" alt=""></li>
+</ul>
+</li>
+<li>view Project Monitoring, click Observe in left menu, select Dashboard Tab</li>
+<li>this page will show Monitoring Information of current project (all resources in this project)
+<img src="images/mon_2.png" alt=""></li>
+<li>can filter by workload, click at dashboard dropdownlist and select Kubernetes/Compute Resources/Workload, type deployment, workload backend<br><img src="images/mon_3.png" alt=""></li>
+<li>select tab Metrics to view performance/metrics information by type, click select query dropdown list to select default metrics information such as cpu usage, memory usage, filesystem usage, etc. 
+<img src="images/mon_4.png" alt=""></li>
+<li>select CPU usage, click check box &apos;Stacked&apos;
+<img src="images/mon_6.png" alt="">  </li>
+<li>change to another metrics such as memory usage.
+<img src="images/mon_7.png" alt=""> </li>
+<li>OpenShift Monitoring base on Prometheus Technology, you can use PromQL for retrive metric information, in select query dropdown list, select Custom query and type &apos;cpu&apos; and wail auto suggestion, 
+<img src="images/mon_8.png" alt=""> </li>
+<li>select &apos;pod:container_cpu_usage:sum&apos; and type &apos;enter&apos; button to view this metrics from PromQL
+<img src="images/mon_9.png" alt=""> </li>
+<li>click Alerts tab to view all alert (the Alerting UI enables you to manage alerts, silences, and alerting rules, we will create alert in next step in this session)
+<img src="images/mon_21.png" alt=""></li>
+<li>click Events Tab to view All event in this project or filter by resource
+<img src="images/mon_10.png" alt=""> </li>
+</ul>
+<h2 id="review-application-performance-metric-code">Review Application Performance Metric Code</h2>
+<p>Developer can enable monitoring for user-defined projects in addition to the default platform monitoring. You can now monitor your own projects in OpenShift Container Platform without the need for an additional monitoring solution. </p>
+<ul>
+<li>review application metric code<ul>
+<li>backend application use quarkus microprofile metrics libraly to generate application metrics</li>
+<li>example code: <a href="https://raw.githubusercontent.com/chatapazar/openshift-workshop/main/src/main/java/org/acme/getting/started/BackendResource.java" target="_blank">https://raw.githubusercontent.com/chatapazar/openshift-workshop/main/src/main/java/org/acme/getting/started/BackendResource.java</a></li>
+<li>example custom metrics in code:<pre><code class="lang-java">@Counted(
+    name = &quot;countBackend&quot;, 
+    description = &quot;Counts how many times the backend method has been invoked&quot;
+    )
+@Timed(
+    name = &quot;timeBackend&quot;, 
+    description = &quot;Times how long it takes to invoke the backend method in second&quot;, 
+    unit = MetricUnits.SECONDS
+    )
+@ConcurrentGauge(
+    name = &quot;concurrentBackend&quot;,
+    description = &quot;Concurrent connection&quot;
+    )
+public Response callBackend(@Context HttpHeaders headers) throws IOException {
+</code></pre>
+</li>
+</ul>
+</li>
+<li>review example metrics of backend application, go to web terminal</li>
+<li>call default quarkus microprofile metrics example<pre><code class="lang-bash">oc exec $(oc get pods -l app=backend | grep backend | head -n 1 | awk &apos;{print $1}&apos;) \
+-- curl -s  http://localhost:8080/q/metrics
+</code></pre>
+example result<pre><code class="lang-bash">...
+# HELP vendor_memoryPool_usage_max_bytes Peak usage of the memory pool denoted by the &apos;name&apos; tag
+# TYPE vendor_memoryPool_usage_max_bytes gauge
+vendor_memoryPool_usage_max_bytes{name=&quot;CodeHeap &apos;non-nmethods&apos;&quot;} 1352064.0
+vendor_memoryPool_usage_max_bytes{name=&quot;CodeHeap &apos;non-profiled nmethods&apos;&quot;} 1018240.0
+vendor_memoryPool_usage_max_bytes{name=&quot;CodeHeap &apos;profiled nmethods&apos;&quot;} 5218944.0
+vendor_memoryPool_usage_max_bytes{name=&quot;Compressed Class Space&quot;} 3856880.0
+vendor_memoryPool_usage_max_bytes{name=&quot;Metaspace&quot;} 3.1625864E7
+vendor_memoryPool_usage_max_bytes{name=&quot;PS Eden Space&quot;} 1.6777216E7
+vendor_memoryPool_usage_max_bytes{name=&quot;PS Old Gen&quot;} 1.8408896E7
+vendor_memoryPool_usage_max_bytes{name=&quot;PS Survivor Space&quot;} 5705344.0
+</code></pre>
+</li>
+<li>call custom quarkus microprofile metrics example<pre><code class="lang-bash">oc exec $(oc get pods -l app=backend | grep backend | head -n 1 | awk &apos;{print $1}&apos;) \
+-- curl -s  http://localhost:8080/q/metrics/application
+</code></pre>
+example result<pre><code class="lang-bash"># TYPE application_org_acme_getting_started_BackendResource_timeBackend_seconds summary
+application_org_acme_getting_started_BackendResource_timeBackend_seconds_count 1.0
+# TYPE application_org_acme_getting_started_BackendResource_timeBackend_seconds_sum gauge
+application_org_acme_getting_started_BackendResource_timeBackend_seconds_sum 2.503457774
+application_org_acme_getting_started_BackendResource_timeBackend_seconds{quantile=&quot;0.5&quot;} 2.503457774
+application_org_acme_getting_started_BackendResource_timeBackend_seconds{quantile=&quot;0.75&quot;} 2.503457774
+application_org_acme_getting_started_BackendResource_timeBackend_seconds{quantile=&quot;0.95&quot;} 2.503457774
+application_org_acme_getting_started_BackendResource_timeBackend_seconds{quantile=&quot;0.98&quot;} 2.503457774
+application_org_acme_getting_started_BackendResource_timeBackend_seconds{quantile=&quot;0.99&quot;} 2.503457774
+application_org_acme_getting_started_BackendResource_timeBackend_seconds{quantile=&quot;0.999&quot;} 2.503457774
+</code></pre>
+</li>
+</ul>
+<h2 id="add-application-performance-metric-to-openshift">Add Application Performance Metric to OpenShift</h2>
+<ul>
+<li>create ServiceMonitor, go to Search in left menu, 
+<img src="images/mon_11.png" alt=""> </li>
+<li>in search page, in resources drop down, type &apos;servicemonitor&apos; for filter, click &apos;SM ServiceMonitor&apos;
+<img src="images/mon_12.png" alt=""> </li>
+<li>Click Create ServiceMonitor button
+<img src="images/mon_13.png" alt=""> </li>
+<li>in Create ServiceMonitor Page, input below YAML for create ServiceMonitor to backend application<pre><code class="lang-yaml">apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: backend-monitor
+  name: backend-monitor
+spec:
+  endpoints:
+  - interval: 30s
+    port: 8080-tcp
+    path: /q/metrics
+    scheme: http
+  - interval: 30s
+    port: 8080-tcp
+    path: /q/metrics/application
+    scheme: http
+  selector:
+    matchLabels:
+      app: backend
+</code></pre>
+example: 
+<img src="images/mon_14.png" alt="">  </li>
+<li>click create and review your ServiceMonitor, click YAML tab to view your yaml code. 
+<img src="images/mon_15.png" alt=""> </li>
+<li>test call you backend application</li>
+<li>go to web terminal. test call your backend 2-3 times<pre><code class="lang-bash">BACKEND_URL=https://$(oc get route backend -o jsonpath=&apos;{.spec.host}&apos;)
+curl $BACKEND_URL/backend
+</code></pre>
+</li>
+<li>click Monitor in left menu, select Metrics Tab
+<img src="images/mon_16.png" alt="">         </li>
+<li>in select query, change to custom query, type &apos;app&apos; and wait auto suggesstion
+<img src="images/mon_17.png" alt=""> 
+<img src="images/mon_18.png" alt=""></li>
+<li>Remark: if you don&apos;t found metrics &apos;application*&apos; in auto suggession, wait a few minute and retry again</li>
+<li>select &apos;application_org_acme_getting_started_BackendResource_countBackend_total&apos;, type enter.
+<img src="images/mon_19.png" alt=""> </li>
+<li>change your custom PromQL such as average tocal call backend service in 1 minute is   <ul>
+<li>type: &apos;rate(application_org_acme_getting_started_BackendResource_countBackend_total[1m])&apos;</li>
+<li>enter
+<img src="images/mon_20.png" alt=""> </li>
+</ul>
+</li>
+<li>Optional: test call backend 2-3 times and check metrics change in Monitoring Pages</li>
+</ul>
+<h2 id="add-alert-to-openshift">Add Alert to OpenShift</h2>
+<ul>
+<li><p>Check <code>PrometheusRule</code> </p>
+<pre><code class="lang-yaml">apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: backend-app-alert
+  namespace: &lt;username&gt;
+  labels:
+    openshift.io/prometheus-rule-evaluation-scope: leaf-prometheus
+spec:
+  groups:
+  - name: backend
+    rules:
+    - alert: HighLatency
+      expr: application_org_acme_getting_started_BackendResource_timeBackend_max_seconds&gt;1
+      labels:
+        severity: &apos;critical&apos;
+      annotations:
+        message: &apos; response time is  sec&apos;
+</code></pre>
+<p>HightLatency Alert will fire when response time is greateer than 1 sec  </p>
+</li>
+</ul>
+<ul>
+<li><p>Create backend-app-alert
+click add icon (+) to open yaml editor
+<img src="images/alert_1.png" alt=""> </p>
+</li>
+<li><p>input PrometheusRule yaml in editor and create (change namespace before run)
+<img src="images/alert_2.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p>Test <code>HightLatency</code> , run k6 as pod on OpenShift, change user1 to your username</p>
+<pre><code class="lang-bash">BACKEND_URL=https://$(oc get route backend -n &lt;your username&gt; -o jsonpath=&apos;{.spec.host}&apos;)/backend
+curl -o load-test-k6.js https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/load-test-k6.js
+oc run load-test -n &lt;your username&gt; -i \
+--image=loadimpact/k6 --rm=true --restart=Never \
+--  run -  &lt; load-test-k6.js \
+-e URL=$BACKEND_URL -e THREADS=25 -e DURATION=2m -e RAMPUP=30s -e RAMPDOWN=30s
+</code></pre>
+<ul>
+<li>25 threads</li>
+<li>Duration 2 minutes</li>
+<li>Ramp up 30 sec</li>
+<li>Ramp down 30 sec</li>
+</ul>
+</li>
+</ul>
+<p>  Check for alert in Developer Console by select Menu <code>Observe</code> then select <code>Alerts</code></p>
+<p>  <img src="images/alert_3.png" alt=""></p>
+<h2 id="next-step">Next Step</h2>
+<ul>
+<li><a href="liveflight.html">Complex Cloud-Native Application with Live Flight Track Demo</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="scale.html" class="navigation navigation-prev " aria-label="Previous page: Scaling">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="liveflight.html" class="navigation navigation-next " aria-label="Next page: Live Flight Track">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Application Monitoring","level":"1.2.4","depth":2,"next":{"title":"Live Flight Track","level":"1.2.5","depth":2,"path":"liveflight.md","ref":"liveflight.md","articles":[]},"previous":{"title":"Scaling","level":"1.2.3","depth":2,"path":"scale.md","ref":"scale.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-livereload","search-plus","copy-code-button","mermaid-gb3"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mermaid-newface":{"theme":"neutral"},"search-plus":{},"copy-code-button":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Red Hat Thailand SA","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenShift Workshop","gitbook":"3.2.3"},"file":{"path":"monitor.md","mtime":"2022-08-24T06:32:06.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-24T06:32:51.813Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
