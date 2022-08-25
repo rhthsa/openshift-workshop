@@ -192,7 +192,7 @@
       
       ![](images/flight/flight-23.png)
    
-   - in Import from Git page, set Git Repo URL to : https://github.com/chatapazar/openshift-workshop.git
+   - in Import from Git page, set Git Repo URL to : https://gitlab.com/ocp-demo/openshift-workshop
    - click show advanced git options
    - set Context dir to : /data-simulator
    - select Import Strategy to Builder Image
@@ -223,7 +223,7 @@
 
 7. Deploy Map-Service from Git Repository (S2I/OpenShift Build)
    - click +Add in left menu, select Import from Git
-   - in Import from Git page, set Git Repo URL to : https://github.com/chatapazar/openshift-workshop
+   - in Import from Git page, set Git Repo URL to : https://gitlab.com/ocp-demo/openshift-workshop
    - click show advanced Git options
    - set Context dir to : /map-service
    - Import Strategy select Builder Image, 
